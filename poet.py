@@ -36,7 +36,8 @@ def create_new_project(args):
 
 def poetry_proxy(command, args):
     """This function acts as a proxy for running standard Poetry commands."""
-    command_string = f'{command} {" ".join(args)}'
+    command_string = f'{command} '
+    command += " ".join(args) if args else ''
     os.system(f'poetry {command_string}')
     print(f'\nPoet has completed the following task: {command_string}\n')
 
@@ -66,6 +67,7 @@ tasks = {
     'new': create_new_project,
     'prep': False,
     'remove': poetry_proxy,
+    'shell': poetry_proxy,
     'status': poetry_shell_status,
 }
 

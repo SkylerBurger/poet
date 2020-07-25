@@ -1,4 +1,4 @@
-# Poet
+<img src="https://imgur.com/oRacQdD.png">
 
 Poet was created for Python devs using a specific workflow involving Pyenv, Virtualenv, and Poetry to manage their project dependencies and environments as detailed in my post, [PVP- A Workflow for Python Projects](https://dev.to/skybur/pvp-a-workflow-for-python-projects-29h3). Poet allows you to initialize a Poetry project, create a clearly-labelled virtual environment, and set that environment as the local Python version for your project, all in a single command. Poet also lets you easily determine if Poetry's shell is active and can act as a proxy to run common Poetry commands.
 

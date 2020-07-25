@@ -44,10 +44,9 @@ def poetry_proxy(command, args):
         command (str) - The command to run
         args (list[str]) - Additional arguments required to run the command
     """
-    print('Proxy - args:', args)
     command_string = f'{command} '
     command_string += " ".join(args) if args else ''
-    print('Proxy - Command String:', command_string)
+    
     os.system(f'poetry {command_string}')
     print(f'\nPoet has completed the following task: {command_string}\n')
 
@@ -59,9 +58,6 @@ def conductor():
     """
     command = sys.argv[1] if len(sys.argv) > 1 else None
     arguments = sys.argv[2:] if len(sys.argv) > 2 else None
-
-    print('Conductor - Command:', command)
-    print('Conductor - Args:', arguments)
 
     if command:
         task_function = tasks.get(command)

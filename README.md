@@ -1,4 +1,4 @@
-<img src="https://imgur.com/q9SAHMk.png" style="display:block;margin:auto;">
+<img src="https://imgur.com/Q2is0ka.png" style="display:block;margin:auto;">
 
 # Poet
 

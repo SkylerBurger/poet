@@ -38,9 +38,8 @@ def create_new_project(_, args):
 
 
 def export_reqs_to_txt(_, __):
-    """This function exports Poetry project dependencies into a requirements.txt file.
-    Since Poetry only supports exporting to requirements.txt at the moment, 
-    this function doesn't require the user to type in anything more than 'export'. 
+    """This function exports Poetry project dependencies into a 
+       requirements.txt file.
     """
     os.system('poetry export -f requirements.txt > requirements.txt')
 
@@ -60,9 +59,8 @@ def poetry_proxy(command, args):
 
 
 def conductor():
-    """
-    Determines which task the user was trying to execute. 
-    Calls the function associated with that task and passes along the user arguments.
+    """Determines which task the user was trying to execute. 
+       Calls the function associated with that task and passes along the user arguments.
     """
     command = sys.argv[1] if len(sys.argv) > 1 else None
     arguments = sys.argv[2:] if len(sys.argv) > 2 else None

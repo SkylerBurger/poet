@@ -39,7 +39,7 @@ That's it! You're ready to call on Poet to help you initalize and manage project
 
 ### Proxy for Poetry
 
-Poet can also act as a proxy to run these Poetry commands, simply refer to `poet` rather than `poetry`:
+Poet can also act as a proxy to run these [Poetry commands](https://python-poetry.org/docs/cli/), simply refer to `poet` rather than `poetry`:
   
 - `poet add <dependency_name>` - Install and add a dependency to your project
 - `poet build` - Builds your project into source and wheels that can then be published to PyPI

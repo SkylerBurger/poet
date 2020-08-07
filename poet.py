@@ -37,6 +37,13 @@ def create_new_project(_, args):
     print(f'Python Version: {python_version}')
 
 
+def export_reqs_to_txt(_, __):
+    """This function exports Poetry project dependencies into a 
+       requirements.txt file.
+    """
+    os.system('poetry export -f requirements.txt > requirements.txt')
+
+
 def poetry_proxy(command, args):
     """This function acts as a proxy for running standard Poetry commands.
     
@@ -52,9 +59,8 @@ def poetry_proxy(command, args):
 
 
 def conductor():
-    """
-    Determines which task the user was trying to execute. 
-    Calls the function associated with that task and passes along the user arguments.
+    """Determines which task the user was trying to execute. 
+       Calls the function associated with that task and passes along the user arguments.
     """
     command = sys.argv[1] if len(sys.argv) > 1 else None
     arguments = sys.argv[2:] if len(sys.argv) > 2 else None
@@ -71,13 +77,24 @@ def conductor():
 
 tasks = {
     'add': poetry_proxy,
+    'build': poetry_proxy,
+    'check': poetry_proxy,
+    'config': poetry_proxy,
+    'env': poetry_proxy,
+    'export': export_reqs_to_txt,
     'init': poetry_proxy,
     'install': poetry_proxy,
+    'lock': poetry_proxy,
     'new': create_new_project,
     'prep': False,
+    'publish': poetry_proxy,
     'remove': poetry_proxy,
+    'run': poetry_proxy,
+    'search': poetry_proxy,
     'shell': poetry_proxy,
+    'show': poetry_proxy,
     'status': poetry_shell_status,
+    'update': poetry_proxy,
 }
 
 

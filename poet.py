@@ -1,4 +1,5 @@
 import os
+import re
 import sys 
 
 
@@ -57,6 +58,42 @@ def poetry_proxy(command, args):
     os.system(f'poetry {command_string}')
     print(f'\nPoet has completed the following task: {command_string}\n')
 
+def extract_pipfile_packages(contents, start):
+    package_list = []
+    for line in contents[start:]:
+        if line == "\n":
+            break
+        regex_obj = re.compile('^(\w+-?)+')
+        match_obj = regex_obj.search(line)
+        if match_obj:
+            package_list.append(match_obj[0])
+    return package_list
+
+
+def pipfile_install(_, __):
+    filepath = f'{os.getcwd()}/Pipfile'
+    with open(filepath) as file:
+        contents = file.readlines()
+
+    packages_start = None
+    dev_packages_start = None
+
+    for index, line in enumerate(contents):
+        if packages_start and dev_packages_start:
+            break
+        if line == '[packages]\n':
+            packages_start = index
+        if line == '[dev-packages]\n':
+            dev_packages_start = index
+
+    packages = extract_pipfile_packages(contents, packages_start)
+    dev_packages = extract_pipfile_packages(contents, dev_packages_start)
+    
+    if packages:
+        os.system(f'poetry add {" ".join(packages)}')
+    if dev_packages:
+        os.system(f'poetry add --dev {" ".join(dev_packages)}')
+
 
 def conductor():
     """Determines which task the user was trying to execute. 
@@ -86,6 +123,7 @@ tasks = {
     'install': poetry_proxy,
     'lock': poetry_proxy,
     'new': create_new_project,
+    'pipfile-install': pipfile_install,
     'prep': False,
     'publish': poetry_proxy,
     'remove': poetry_proxy,

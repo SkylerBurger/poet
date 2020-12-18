@@ -35,6 +35,8 @@ That's it! You're ready to call on Poet to help you initalize and manage project
 
 - `poet new <project_name> <python_version>` - Initializes a new Poetry project and accompanying virtual environment. Sets the new virtual environment as the local version of Python for the project directory. Also changes the default `README.rst` to `README.md`
 
+- `poet pipfile-install` - This command extracts the names of packages listed as dependencies and dev-dependencies from a Pipenv Pipfile and then uses Poetry to install those packages respectively. This does not maintain the versions listed in the Pipfile, it relies on Poetry to re-resolve the dependencies.
+
 - `poet export` - Poetry only supports exporting project dependencies to a `requirements.txt` file. This shortened command fills in the remaining arguments so you don't have to search around for the only command string that works with Poetry's exporting abilities.
 
 ### Proxy for Poetry
